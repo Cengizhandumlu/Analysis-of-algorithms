@@ -10,12 +10,21 @@ public class DynamicArray {
     }
 
     // Dizimiz de sona eleman eklemek için oluşturulan fonksiyon
+    
+    //amortized const
+    //yeni eleman eklenmesi için n eleman yeni diziye kopyalanacaktır.
+    //2n elemanı eklemek için n adet kopyalama gerekmektedir.
+    //2n elemanın eklenmesi için 2n işlem + n adet kopyalama = 3n
+    //O(3n/2n) = O(3/2) = O(1)
     public void append(int eleman) {
         // Dizinin kapasitesi ve eleman sayısı kontrol edildi ve yetersiz olduğu durumda kapasite 2 katına çıkarıldı
         if (n == kapasite) {
+            
+            
             int yeni[] = new int[kapasite * 2];// Yeni eleman ekleneceği için eski kapasitenin 2 katı kadarlık bir dizi
-                                               // oluşturuldu.
-            for (int i = 0; i < kapasite; i++) {
+                                               // oluşturuldu. ## complexity =>O(n)
+          
+            for (int i = 0; i < kapasite; i++) {// ##complexity =>O(n)
                 yeni[i] = array[i];// array deki elemanlar yeni diziye kopyalandı.
             }
             // kapasite ve yeni değerleri atandı.
@@ -28,8 +37,12 @@ public class DynamicArray {
     }
 
     // Dizimizin son elemanını silen fonksiyonumuz.
+    
+    // Array' den sondan eleman silmek için
+    //amortized cost
+    //O(1)
     public void remove() {
-        if (n > 0) {// Eğer dizimiz de eleman varsa sondan eleman silindi.
+        if (n > 0) {// Eğer dizimiz de eleman varsa sondan eleman silindi. ##complexity=>O(5) =>> ~ O(1)
             array[n - 1] = 0;
             n--;// Eleman silindiği için dizideki eleman sayısı azaltıldı.
         }
