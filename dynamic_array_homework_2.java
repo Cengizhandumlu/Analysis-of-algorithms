@@ -11,7 +11,7 @@ public class DynamicArray {
 
     // Dizimiz de sona eleman eklemek için oluşturulan fonksiyon
     
-    //amortized cont
+    //amortized cost
     //yeni eleman eklenmesi için n eleman yeni diziye kopyalanacaktır.
     //2n elemanı eklemek için n adet kopyalama gerekmektedir.
     //2n elemanın eklenmesi için 2n işlem + n adet kopyalama = 3n
