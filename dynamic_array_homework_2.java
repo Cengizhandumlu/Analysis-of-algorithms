@@ -1,35 +1,40 @@
 public class DynamicArray {
+     // Cengizhan DUMLU 160401088
     int array[];
     int n;
-    int kapasite;
+    int ks;
     //constructor
     public DynamicArray() {
         array = new int[2];// yeni 2 elemanlı boş bir array
         n = 0; // Dizinin içerisindeki eleman sayısı
-        kapasite = 2;// Dinamik dizinin kapasitesi
+        ks = 2;// Dinamik dizinin kapasitesi
     }
 
     // Dizimiz de sona eleman eklemek için oluşturulan fonksiyon
     
     //amortized cost
     //yeni eleman eklenmesi için n eleman yeni diziye kopyalanacaktır.
+
     //2n elemanı eklemek için n adet kopyalama gerekmektedir.
+
     //2n elemanın eklenmesi için 2n işlem + n adet kopyalama = 3n
+
     //O(3n/2n) = O(3/2) = O(1)
     public void append(int eleman) {
         // Dizinin kapasitesi ve eleman sayısı kontrol edildi ve yetersiz olduğu durumda kapasite 2 katına çıkarıldı
-        if (n == kapasite) {
+        if (n == ks) {
             
             
-            int yeni[] = new int[kapasite * 2];// Yeni eleman ekleneceği için eski kapasitenin 2 katı kadarlık bir dizi
+            int yeni[] = new int[ks * 2];// Yeni eleman ekleneceği için eski kapasitenin 2 katı kadarlık bir dizi
+
                                                // oluşturuldu. ## complexity =>O(n)
           
-            for (int i = 0; i < kapasite; i++) {// ##complexity =>O(n)
+            for (int i = 0; i < ks; i++) {// ##complexity =>O(n)
                 yeni[i] = array[i];// array deki elemanlar yeni diziye kopyalandı.
             }
             // kapasite ve yeni değerleri atandı.
             array = yeni;
-            kapasite = kapasite * 2;
+            ks = ks * 2;
         }
         // kapasitenin yeterli olduğu durumda eleman eklendi.
         array[n] = eleman;
@@ -49,28 +54,30 @@ public class DynamicArray {
     }
 
     // Dizimize yeni kapasite vermek için oluşturulan fonksiyonumuz.
-    public void resize(int yeni_kapasite) {
-        int temp[] = new int[yeni_kapasite];// yeni kapasite vermek için gönderilen parametre kadarlık dizi
+    public void resize(int yeni_ks) {
+        int temp[] = new int[yeni_ks];// yeni kapasite vermek için gönderilen parametre kadarlık dizi
                                             // oluşturuldu.
-        for (int i = 0; i < kapasite; i++) {
+        for (int i = 0; i < ks; i++) {
             temp[i] = array[i];// dizi deki elemanlar yeni oluşturulan diziye atandı.
         }
         // Yeni kapasite ataması ve dizi ataması yapıldı.
+
         array = temp;
-        kapasite = yeni_kapasite;
+
+        ks = yeni_ks;
     }
 
     public static void main(String args[]) {
         DynamicArray array = new DynamicArray();
 
-        System.out.println("Array elaman sayısı:" + array.n + ", Array kapasite: " + array.kapasite);
+        System.out.println("elaman sayısı:" + array.n + "  kapasite: " + array.ks);
         //burda dizi sonuna eleman ekelemek için  örnek çağırımlar yapıldı.
-        array.append(18);
-        array.append(10);
+        array.append(8);
+        array.append(1);
         array.append(6);
-        array.append(90);
-        array.append(51);
-        System.out.println("Array elaman sayısı:" + array.n + ", Array kapasite: " + array.kapasite);
+        array.append(4);
+        array.append(5);
+        System.out.println("elaman sayısı:" + array.n + "  kapasite: " + array.ks);
         
         //dizimizin sonundan eleman silmek için örnek çağırımlar yapıldı.
         array.remove();
@@ -78,14 +85,14 @@ public class DynamicArray {
         array.remove();
         array.remove();
         array.remove();
-        System.out.println("Array elaman sayısı:" + array.n + ", Array kapasite: " + array.kapasite);
+        System.out.println("elaman sayısı:" + array.n + "  kapasite: " + array.ks);
         
         //resize fonksiyonu için örnek çağırımlar yapıldı.
         array.resize(15);
-        array.resize(20);
-        array.resize(25);
-        array.resize(30);
-        array.resize(35);
-        System.out.println("Array elaman sayısı:" + array.n + ", Array kapasite: " + array.kapasite);
+        array.resize(16);
+        array.resize(22);
+        array.resize(28);
+        array.resize(45);
+        System.out.println("elaman sayısı:" + array.n + "  kapasite: " + array.ks);
     }
 }
