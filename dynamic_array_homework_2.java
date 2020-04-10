@@ -11,7 +11,7 @@ public class DynamicArray {
 
     // Dizimiz de sona eleman eklemek için oluşturulan fonksiyon
     
-    //amortized const
+    //amortized cont
     //yeni eleman eklenmesi için n eleman yeni diziye kopyalanacaktır.
     //2n elemanı eklemek için n adet kopyalama gerekmektedir.
     //2n elemanın eklenmesi için 2n işlem + n adet kopyalama = 3n
@@ -42,7 +42,7 @@ public class DynamicArray {
     //amortized cost
     //O(1)
     public void remove() {
-        if (n > 0) {// Eğer dizimiz de eleman varsa sondan eleman silindi. ##complexity=>O(5) =>> ~ O(1)
+        if (n > 0) {// Eğer dizimiz de eleman varsa sondan eleman silindi. ##complexity=>O(5) =>> O(1)
             array[n - 1] = 0;
             n--;// Eleman silindiği için dizideki eleman sayısı azaltıldı.
         }
